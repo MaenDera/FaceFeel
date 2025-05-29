@@ -34,7 +34,7 @@ Follow these steps to get the application up and running on your local machine.
 First, clone this repository to your local machine:
 
 ```bash
-git clone <https://github.com/MaenDera/FaceFeel>
+git clone <[https://github.com/MaenDera/FaceFeel](https://github.com/MaenDera/FaceFeel.git)>
 cd <FaceFeel>
 ```
 
@@ -62,6 +62,8 @@ pip install -r requirements.txt
 
 The application requires a pre-trained Keras model.
 **Place your `last_model_test.keras` file in the root directory of the project.**
+THE MODEL IS 434 MB SO I COULDN'T UPLOAD HERE. YOU CAN SEND ME AN EMAIL
+AT maen-derany@hotmail.com TO GET IT.
 
 ### 5. Run the Application
 
