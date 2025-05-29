@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FaceFeel</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <div>
+        <a href="/">Home</a>
+        <a href="/research">Research</a>
+      </div>
+      <button id="theme-toggle">Dark</button>
+    </nav>
+
+    <h1 class="title">
+      <span class="left">Face</span>
+      <span class="right">Feel</span>
+    </h1>
+    <form id="upload-form">
+      <input type="file" name="image" accept="image/*" required />
+      <label><input type="checkbox" name="crop_face"> Find Faces</label>
+      <button type="submit">Reveal Emotion</button>
+    </form>
+
+    <div class="how-to-use">
+      <h2>Before Use:</h2>
+      <p>
+        You can upload a photo with one or more faces. Now for best results:
+      </p><br>
+      <ul>
+        <li>✅ Use clear, front-facing images.</li>
+        <li>👥 If the image has many faces or the faces are small, use <strong>"Find Faces"</strong>.</li>
+        <li>👤 If the image already shows a single, close-up face, leave it unchecked.</li>
+        <li>🔍 Click <strong>Reveal Emotion</strong> and wait for the results.</li>
+        <li>🔐 Your image is never saved. Everything happens temporarily in memory.</li>
+        <li>⚠️ <strong>Note:</strong> This is an AI-based system and may not always interpret emotions accurately, especially in low-quality images or complex expressions.</li>
+      </ul>
+    </div>
+
+    <div class="pro-tips">
+      <h2>✨ Pro Tips ✨</h2>
+      <ul>
+        <li>Dig up an old photos, maybe try using a photo from your CV.</li>
+        <li>Use extreme expressions; big laughs or tears.</li>
+        <li>Try bright sunlight, dim lamps, and side lighting.</li>
+        <li>Upload both group shots and close ups.</li>
+        <li>Shoot from different angles.</li>
+        <li>Compare neutral vs. happy portraits of the same face.</li>
+        <li>Include different eras.</li>
+      </ul>
+    </div>
+
+    <div id="results" class="hidden"></div>
+
+    <div class="privacy-box">
+      <p>🔐 Your images is processed entirely in memory. Nothing is ever saved or shared. <a href="/privacy" target="_blank">Learn more</a></p>
+    </div>
+    
+    <!-- <p class="note">🚫 No image is saved. Everything processed on the fly</p> -->
+  </div>
+    <!-- Loading overlay goes here, sibling to .container -->
+  <div id="loading-overlay" class="hidden">
+    <div class="loader-bar"></div>
+    <p>Analyzing Emotions...</p>
+  </div>
+  <div class="footer-credit">© 2025 Maen Derany</div>
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

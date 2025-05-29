@@ -1,0 +1,422 @@
+/* Root color variables for light and dark themes */
+:root {
+  --bg: #f8f9fa;
+  --fg: #212529;
+  --card-bg: #ffffff;
+  --card-border: #dee2e6;
+  --primary: #007bff;
+  --primary-hover: #0056b3;
+  --note: #45494d;
+  --result-bg: #e9ecef;
+}
+
+body.dark {
+  --bg: #212529;
+  --fg: #f8f9fa;
+  --card-bg: #343a40;
+  --card-border: #495057;
+  --primary: #66b2ff;
+  --primary-hover: #3399ff;
+  --note: #adb5bd;
+  --result-bg: #495057;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--bg);
+  color: var(--fg);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 2rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.container {
+  background-color: var(--card-bg);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  width: 100%;
+  min-height: 80vh;
+  max-width: 800px;
+  overflow: hidden;
+  transition: background-color 0.3s ease;
+
+  display: flex;
+  flex-direction: column;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--primary);
+  font-weight: bold;
+  margin-right: 1rem;
+}
+
+nav button {
+  background: none;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav button:hover {
+  background-color: var(--primary-hover);
+  color: white;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+input[type="file"] {
+  padding: 0.5rem;
+  border: 1px solid var(--card-border);
+  border-radius: 0.5rem;
+}
+
+label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+button[type="submit"] {
+  display: block;        /* ensure width is content-driven */
+  margin: 0.8rem auto;
+  padding: 0.6rem 1.2rem;       /* a bit less horizontal padding */
+  min-width: 120px;             /* still guarantees tappable size */
+  max-width: 180px;             /* prevents it from growing too wide */
+  width: auto;                  /* shrink-wrap around its text */
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 0.6rem;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: var(--primary-hover);
+  transform: scale(1.10);
+}
+
+#results {
+  border-top: 1px solid var(--card-border);
+  padding-top: 1rem;
+}
+
+.result-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 0.8rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.result-card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.probs-container p {
+  margin: 0.2rem 0;
+}
+
+/* Highlight highest probability */
+.highlight {
+  background-color: rgba(40, 167, 69, 0.1);
+  color: var(--fg);
+  font-weight: bold;
+  border-left: 4px solid #28a745;
+  padding: 0.3rem;
+  border-radius: 4px;
+}
+
+.note {
+  font-size: 1.05rem;
+  font-weight: bold;
+  color: var(--note);
+  text-align: center;
+  margin-top: auto;
+  opacity: 0;
+  animation: pulseOnce 1s ease-out 1.5s forwards;
+}
+
+@keyframes pulseOnce {
+  0% { transform: scale(1); opacity: 0; }
+  50% { transform: scale(1.35); opacity: 1; }
+  100% { transform: scale(1); ; opacity: 1;}
+}
+
+
+
+
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  position: relative;
+  overflow: hidden;
+}
+
+.title .left,
+.title .right {
+  opacity: 0;
+  transform: translateX(0);
+  animation-fill-mode: forwards;
+}
+
+.title .left {
+  animation: slideInLeft 1s ease-out forwards;
+}
+
+.title .right {
+  animation: slideInRight 1s ease-out forwards;
+  /* animation-delay: 0.3s; */
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+
+
+
+#loading-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(5px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;  /* make sure it's on top */
+}
+
+.hidden {
+  display: none !important;
+}
+
+.loader-bar {
+  width: 200px;
+  height: 6px;
+  background: #eee;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.loader-bar::before {
+  content: "";
+  position: absolute;
+  top: 0; left: -40%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
+  animation: loading-slide 1.2s linear infinite;
+  border-radius: 3px;
+}
+
+@keyframes loading-slide {
+  0% {
+    left: -40%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+
+
+.how-to-use {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: var(--card-bg);
+  border-radius: 1rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.how-to-use h2 {
+  margin-top: 0;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: var(--primary);
+}
+
+
+
+.privacy-box {
+  margin-top: 2rem;
+  font-size: 0.85rem;
+  color: var(--note);
+  text-align: center;
+  margin-top: auto;
+  opacity: 0;
+  animation: pulseOnce 1s ease-out 1.5s forwards;
+}
+
+@keyframes pulseOnce {
+  0% { transform: scale(1); opacity: 0; }
+  50% { transform: scale(1.35); opacity: 1; }
+  100% { transform: scale(1); ; opacity: 1;}
+}
+.privacy-box a {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+
+
+
+.pro-tips {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: var(--card-bg);
+  border-radius: 1rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.pro-tips h2 {
+  margin-top: 0;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: var(--primary);
+}
+
+.pro-tips ul {
+  margin-top: 0.5rem;
+  list-style: disc inside;
+}
+
+.pro-tips li {
+  margin: 0.3rem 0;
+}
+
+
+
+
+
+.footer-credit {
+  position: fixed;           /* fixed relative to viewport */
+  bottom: 0;                 /* flush with bottom edge */
+  left: 50%;                 /* start at horizontal center */
+  transform: translateX(-50%); /* truly center it */
+  padding: 0.5rem 1rem;      /* a bit of breathing room */
+  background-color: var(--card-bg);
+  color: var(--note);
+  font-size: 0.85rem;
+  z-index: 1000;             /* above other content */
+  border-top: 1px solid var(--card-border);
+}
+
+
+/* Global link styling */
+a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+a:hover,
+a:focus {
+  color: var(--primary-hover);
+  text-decoration: underline;
+}
+
+a:visited {
+  color: var(--primary);
+}
+
+/* Example: make links in research sections stand out slightly */
+.research-section a {
+  font-weight: 500;
+}
+
+
+
+.research-section {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: var(--card-bg);
+  border-radius: 1rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  line-height: 1.6;
+}
+
+.research-section h2 {
+  margin-top: 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary);
+  border-bottom: 2px solid var(--result-bg);
+  padding-bottom: 0.3rem;
+}
+
+/* Special accent for Model Development */
+#model-development {
+  border-left: 4px solid var(--primary);
+  padding-left: 1.2rem;   /* ensure the text doesn’t bump into the border */
+}
+

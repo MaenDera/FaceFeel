@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Research</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <div>
+        <a href="/">Home</a>
+        <a href="/research">Research</a>
+      </div>
+      <button id="theme-toggle">Dark</button>
+    </nav>
+
+    <h1 class="title">
+      <span class="left">AI</span>
+      <span class="right">Research</span>
+    </h1>
+
+    <!-- ===== Introduction ===== -->
+    <section id="introduction" class="research-section">
+      <h2>Introduction</h2>
+      <p>
+        I’ve had this idea brewing for a while, and now I’ve finally decided to let it see the light.
+        Building an AI that can tell you how you’re feeling from a photo sounded both fascinating and
+        fun, especially when I got to test it on my own CV photo to discover which emotions I’m projecting.
+        And so, here we are!
+      </p>
+    </section>
+
+    <!-- ===== Data Gathering ===== -->
+    <section id="data-gathering" class="research-section">
+      <h2>Data Gathering</h2>
+      <p>
+        I kicked things off on Kaggle, no way was I spending months capturing and labeling my own images!
+        My first pick was <strong>FER-2013</strong> (Facial Expression Recognition 2013). It was convenient,
+        but I topped out at around <em>57–64% accuracy</em>, which wasn’t nearly enough and struggled on
+        tricky faces.
+      </p>
+      <p>
+        Next, I upgraded to the <strong>Facial Emotion Recognition Image Dataset</strong>
+        (<a href="https://www.kaggle.com/datasets/sujaykapadnis/emotion-recognition-dataset" target="_blank">
+        Kaggle link</a>) full-color, higher-res photos that gave my models a much richer learning ground.
+      </p>
+    </section>
+
+    <!-- ===== Model Development ===== -->
+    <section id="model-development" class="research-section">
+      <h2>Architecture</h2>
+      <p>
+        This is where I poured in most of my time: experimenting with different network architectures
+        from simple CNNs to transfer learning with pre-trained backbones like VGG16 and ResNet50.
+        Every tweak matters: choosing the right layer depth, adding batch normalization, tuning
+        learning rates, and applying different techniques to prevent overfitting.
+      </p><br>
+      <p>
+        Why so much effort here? Because small tweaks can mean the difference between
+        “meh” and “wow” performance. Validation splits, and model
+        ensembling all became daily rituals to squeeze out every last percentage point. For a final accuracy of 74%
+      </p>
+    </section>
+
+    <!-- ===== What Could Be Better? ===== -->
+    <section id="improvements" class="research-section">
+      <h2>What Could Be Better?</h2>
+      <ul>
+        <li><strong>Live Camera Capture:</strong> Add an “Open Camera” mode so users can see real-time emotion feedback via their webcam.</li>
+        <li><strong>Add More Emotions:</strong> Like disgust, and fear to improve experience.</li>
+        <li><strong>Additional Architectures:</strong> Experiment with lightweight models (MobileNet, EfficientNet) for on-device inference.</li>
+      </ul>
+    </section>
+
+    <!-- ===== Summary ===== -->
+    <section id="summary" class="research-section">
+      <h2>Summary</h2>
+      <p>
+        In this project, I built an AI pipeline from dataset selection to model tuning—to predict facial emotions
+        from photos. Starting with FER-2013 and moving to a richer Kaggle dataset, I iterated through CNNs to push accuracy beyond initial baselines.
+      </p><br>
+      <p>
+        The biggest time sink was model development, tweaking architectures, and hyperparameters, to squeeze out performance.
+      </p>
+      <p>
+        Overall, this has been a valuable exercise in data science, deep learning, and user-centered design.
+        I’m excited to refine it further and explore how accurately AI can read and even anticipate human emotion.
+      </p>
+    </section>
+
+    <!-- ===== Repository ===== -->
+    <section id="repository" class="research-section">
+      <h2>Repository</h2>
+      <p>
+        Check out the full source code on 
+        <a href="https://github.com/yourusername/your-repo" target="_blank" rel="noopener noreferrer">
+          GitHub.
+        </a>
+      </p>
+    </section>
+
+    <div class="privacy-box">
+      <p>🔐 Your images is processed entirely in memory. Nothing is ever saved or shared. <a href="/privacy" target="_blank">Learn more</a></p>
+    </div>
+  </div>
+
+  <div class="footer-credit">© 2025 Maen Derany</div>
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
